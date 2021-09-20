@@ -10,9 +10,9 @@ const generateTarget = () => {
 // checks which guess is closest  to target
 // return true if user is closest, false if computer is closest
 const compareGuesses = (user_guess, comp_guess, secret_number) => {
-  const user_diff = user_guess - secret_number;
-  const comp_diff = comp_guess - secret_number;
-  return Math.abs(user_diff) < Math.abs(comp_diff);
+  const user_diff = getAbsoluteDistance(user_guess, secret_number);
+  const comp_diff = getAbsoluteDistance(comp_guess, secret_number);
+  return user_diff < comp_diff;
 };
 
 // Updates scores
@@ -27,4 +27,8 @@ const updateScore = (winner) => {
 
 const advanceRound = () => {
   currentRoundNumber += 1;
+};
+
+const getAbsoluteDistance = (val1, val2) => {
+  return Math.abs(val1 - val2);
 };
